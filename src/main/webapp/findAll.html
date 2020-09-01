@@ -1,0 +1,73 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>All laptops</title>
+</head>
+<body>
+<!--<div>-->
+<!--    <h1>List of laptops</h1>-->
+<!--    <table border="2" cellpadding="2" width="70%">-->
+<!--        <tr>-->
+<!--            <th>Id</th>-->
+<!--            <th>Model</th>-->
+<!--            <th>Manufacturer</th>-->
+<!--            <th>CPU</th>-->
+<!--            <th>Memory</th>-->
+<!--            <th>Used sign</th>-->
+<!--            <th>Type of shell</th>-->
+<!--            <th>Price</th>-->
+<!--            <th>Year</th>-->
+<!--        </tr>-->
+<!--        <c:forEach items="${laptops}" var="laptop">-->
+<!--            <tr>-->
+<!--                <td>${laptop.id}</td>-->
+<!--                <td>${laptop.model}</td>-->
+<!--                <td>${laptop.manufacturer}</td>-->
+<!--                <td>${laptop.cpu}</td>-->
+<!--                <td>${laptop.memory}</td>-->
+<!--                <td>${laptop.signOfUsed}</td>-->
+<!--                <td>${laptop.price}</td>-->
+<!--                <td>${laptop.year}</td>-->
+<!--            </tr>-->
+<!--        </c:forEach>-->
+<!--    </table>-->
+<!--    <br/>-->
+<!--    <a href="save.html">Add new laptop</a>-->
+<!--    <p><a href="index.html">Menu</a></p>-->
+<!--</div>-->
+<h1>List of laptops</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Model</th>
+        <th>Manufacturer</th>
+        <th>CPU</th>
+        <th>Memory</th>
+        <th>Sign of using</th>
+        <th>Type of shell</th>
+        <th>Price</th>
+        <th>Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lap : ${laptops}">
+
+        <td th:text="${lap.id}"></td>
+        <td th:text="${lap.model}"></td>
+        <td th:text="${lap.manufacturer}"></td>
+        <td th:text="${lap.cpu}"></td>
+        <td th:text="${lap.memory}"></td>
+        <td th:text="${lap.signOfUsed}"></td>
+        <td th:text="${lap.typeOfShell}"></td>
+        <td th:text="${lap.price}"></td>
+        <td th:text="${lap.year}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

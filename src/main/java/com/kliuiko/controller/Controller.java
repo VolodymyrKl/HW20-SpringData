@@ -3,12 +3,9 @@ package com.kliuiko.controller;
 import com.kliuiko.exceptions.LaptopException;
 import com.kliuiko.model.Laptop;
 import com.kliuiko.model.enams.*;
-import com.kliuiko.repository.LaptopRepository;
 import com.kliuiko.service.LaptopServiceImpl;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -39,7 +36,7 @@ public class Controller {
 
     @GetMapping
     public String index() {
-        return "index.jsp";
+        return "index.html";
     }
 
     @GetMapping(path = "/findAll")
@@ -48,7 +45,7 @@ public class Controller {
         for (Laptop laptops : laptopServiceImpl.findAll()) {
             modelAndView.addObject("laptops", laptopServiceImpl.findAll());
         }
-        modelAndView.setViewName("findAll.jsp");
+        modelAndView.setViewName("findAll.html");
         return modelAndView;
     }
 
@@ -62,7 +59,7 @@ public class Controller {
         model.addAttribute("model", laptop.getModel());
         model.addAttribute("manufacturer", laptop.getManufacturer());
         //Do Something
-        return "newlaptop.jsp";
+        return "newlaptop.html";
     }
 
     //
@@ -81,7 +78,7 @@ public class Controller {
 //                typeOfShell, price, year);
 //        model.addAttribute(laptop);
 //        laptopServiceImpl.save(laptop);
-//        return "save.jsp";
+//        return "save.html";
 //    }
 
     @GetMapping(path = "/findman")
@@ -89,25 +86,25 @@ public class Controller {
         model.addAttribute("Manufacturer", laptopServiceImpl.findAllByManufacturer(manufacturer));
 
         laptopServiceImpl.findAllByManufacturer(manufacturer);
-        return "findman.jsp";
+        return "findman.html";
     }
 
     @GetMapping("/laptop/{id}")
     public String findById(@PathVariable Long id) {
         Optional.ofNullable(laptopServiceImpl.findById(id)
                 .orElseThrow(() -> new LaptopException(id)));
-        return "findbyid.jsp";
+        return "findbyid.html";
     }
 
 //    @GetMapping(path = "/findmemory")
 //    public String findByMemoryGreaterThan() {
 //        laptopServiceImpl.findByMemoryGreaterThan();
-//        return "findmemory.jsp";
+//        return "findmemory.html";
 //    }
 
     @GetMapping(path = "/findused")
     public String findAllBySignOfUsed(SignOfUsed signOfUsed) {
         laptopServiceImpl.findAllBySignOfUsed(signOfUsed);
-        return "findused.jsp";
+        return "findused.html";
     }
 }
