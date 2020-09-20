@@ -1,17 +1,14 @@
 package com.kliuiko.model;
 
 import com.kliuiko.model.enams.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
-@AllArgsConstructor
+
+@NoArgsConstructor
 public class Laptop {
 
     @Id
@@ -19,15 +16,18 @@ public class Laptop {
     private long id;
 
     private String model;
+    @Enumerated(EnumType.STRING)
     private Manufacturer manufacturer;
-    private CPU cpu;
+    private String cpu;
     private int memory;
+    @Enumerated(EnumType.STRING)
     private SignOfUsed signOfUsed;
+    @Enumerated(EnumType.STRING)
     private TypeOfShell typeOfShell;
     private float price;
     private int year;
 
-    public Laptop(String model, Manufacturer manufacturer, CPU cpu, int memory,
+    public Laptop(String model, Manufacturer manufacturer, String cpu, int memory,
                   SignOfUsed signOfUsed, TypeOfShell typeOfShell, float price, int year) {
         this.model = model;
         this.manufacturer = manufacturer;
@@ -37,10 +37,5 @@ public class Laptop {
         this.typeOfShell = typeOfShell;
         this.price = price;
         this.year = year;
-
-    }
-
-    public Laptop() {
-
     }
 }

@@ -1,5 +1,7 @@
 package com.kliuiko.model.enams;
 
+import com.fasterxml.jackson.annotation.*;
+
 public enum Manufacturer {
-    APPLE, SAMSUNG, HUAWEI, HP, DELL, LENOVO
+    Apple, Samsung, Huawei, HP, Dell, Lenovo
 }

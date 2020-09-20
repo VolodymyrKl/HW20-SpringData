@@ -7,13 +7,13 @@ import com.kliuiko.model.enams.SignOfUsed;
 import java.util.List;
 
 public interface LaptopService {
-    List<Laptop> findAll();
-
-    //    Optional<Laptop> findById(Long id);
-    List<Laptop> findAllByManufacturer(Manufacturer manufacturer);
-
-//    List<Laptop> findByMemoryGb16GreaterThan();
-
-    List<Laptop> findAllBySignOfUsed(SignOfUsed signOfUsed);
+//    List<Laptop> findAll();
+//
+//    //    Optional<Laptop> findById(Long id);
+//    List<Laptop> findAllByManufacturer(Manufacturer manufacturer);
+//
+////    List<Laptop> findByMemoryGb16GreaterThan();
+//
+//    List<Laptop> findAllBySignOfUsed(SignOfUsed signOfUsed);
 
 }

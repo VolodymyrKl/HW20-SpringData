@@ -1,49 +1,44 @@
 package com.kliuiko.service;
 
-import com.google.common.collect.Lists;
 import com.kliuiko.model.Laptop;
-import com.kliuiko.model.enams.*;
+import com.kliuiko.model.enams.SignOfUsed;
+import com.kliuiko.model.enams.Manufacturer;
 import com.kliuiko.repository.LaptopRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class LaptopServiceImpl implements LaptopService {
-    private LaptopRepository laptopRepository;
 
-    @Autowired
-    public LaptopServiceImpl(LaptopRepository laptopRepository) {
-        this.laptopRepository = laptopRepository;
-    }
+    private final LaptopRepository laptopRepository;
 
     public Laptop save(Laptop laptop) {
         return laptopRepository.save(laptop);
     }
 
     public List<Laptop> findAll() {
-        return Lists.newArrayList(laptopRepository.findAll());
-    }
-
-
-    //    public List<Laptop> findAll() {
-//        return laptopRepository.findAll();
-//    }
-    public List<Laptop> findAllByManufacturer(Manufacturer manufacturer) {
-        return laptopRepository.findAllByManufacturer(manufacturer);
+        return laptopRepository.findAll();
     }
 
     public Optional<Laptop> findById(Long id) {
         return laptopRepository.findById(id);
     }
 
-//    public List<Laptop> findByMemoryGreaterThan() {
-//        return laptopRepository.findByMemoryGreaterThan();
-//    }
+    public List<Laptop> findByManufacturer(Manufacturer manufacturer) {
+        return laptopRepository.findAllByManufacturer(manufacturer);
+    }
+
+    public List<Laptop> findByMemoryGreaterThan(int value) {
+        return laptopRepository.findByMemoryGreaterThan(value);
+    }
 
     public List<Laptop> findAllBySignOfUsed(SignOfUsed signOfUsed) {
         return laptopRepository.findAllBySignOfUsed(signOfUsed);
     }
 }
+
+
